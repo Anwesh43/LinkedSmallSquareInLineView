@@ -222,7 +222,7 @@ class SmallSquareInLineView(ctx : Context) : View(ctx) {
         fun create(activity : Activity) : SmallSquareInLineView {
             val view : SmallSquareInLineView = SmallSquareInLineView(activity)
             activity.setContentView(view)
-            return view 
+            return view
         }
     }
 }
