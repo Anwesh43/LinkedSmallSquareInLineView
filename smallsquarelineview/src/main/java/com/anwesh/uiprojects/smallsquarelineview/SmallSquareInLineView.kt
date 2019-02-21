@@ -192,6 +192,27 @@ class SmallSquareInLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
 
+    }
 
+    data class Renderer(var view : SmallSquareInLineView) {
+
+        private val ssl : SmallSquareInLine = SmallSquareInLine(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            ssl.draw(canvas, paint)
+            animator.animate {
+                ssl.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ssl.startUpdating {
+                animator.start()
+            }
+        }
     }
 }
